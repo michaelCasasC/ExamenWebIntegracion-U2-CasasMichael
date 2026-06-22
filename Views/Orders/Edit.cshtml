@@ -1,0 +1,94 @@
+@model NorthwindApp.Models.Order
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Orderid" />
+            <div class="form-group">
+                <label asp-for="Customerid" class="control-label"></label>
+                <select asp-for="Customerid" class="form-control" asp-items="ViewBag.Customerid"></select>
+                <span asp-validation-for="Customerid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employeeid" class="control-label"></label>
+                <select asp-for="Employeeid" class="form-control" asp-items="ViewBag.Employeeid"></select>
+                <span asp-validation-for="Employeeid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orderdate" class="control-label"></label>
+                <input asp-for="Orderdate" class="form-control" />
+                <span asp-validation-for="Orderdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Requireddate" class="control-label"></label>
+                <input asp-for="Requireddate" class="form-control" />
+                <span asp-validation-for="Requireddate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shippeddate" class="control-label"></label>
+                <input asp-for="Shippeddate" class="form-control" />
+                <span asp-validation-for="Shippeddate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shipvia" class="control-label"></label>
+                <select asp-for="Shipvia" class="form-control" asp-items="ViewBag.Shipvia"></select>
+                <span asp-validation-for="Shipvia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Freight" class="control-label"></label>
+                <input asp-for="Freight" class="form-control" />
+                <span asp-validation-for="Freight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shipname" class="control-label"></label>
+                <input asp-for="Shipname" class="form-control" />
+                <span asp-validation-for="Shipname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shipaddress" class="control-label"></label>
+                <input asp-for="Shipaddress" class="form-control" />
+                <span asp-validation-for="Shipaddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shipcity" class="control-label"></label>
+                <input asp-for="Shipcity" class="form-control" />
+                <span asp-validation-for="Shipcity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shipregion" class="control-label"></label>
+                <input asp-for="Shipregion" class="form-control" />
+                <span asp-validation-for="Shipregion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shippostalcode" class="control-label"></label>
+                <input asp-for="Shippostalcode" class="form-control" />
+                <span asp-validation-for="Shippostalcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shipcountry" class="control-label"></label>
+                <input asp-for="Shipcountry" class="form-control" />
+                <span asp-validation-for="Shipcountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

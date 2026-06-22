@@ -1,0 +1,107 @@
+@model IEnumerable<NorthwindApp.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Orderdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Requireddate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shippeddate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Freight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shipname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shipaddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shipcity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shipregion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shippostalcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shipcountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShipviaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orderdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requireddate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shippeddate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Freight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shipname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shipaddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shipcity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shipregion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shippostalcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shipcountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Customerid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Employeeid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipviaNavigation.Shipperid)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Orderid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Orderid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Orderid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
