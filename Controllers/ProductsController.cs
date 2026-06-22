@@ -90,6 +90,7 @@ namespace NorthwindApp.Controllers
         }
 
         // GET: Products/Create
+        
         public IActionResult Create()
         {
             ViewData["Categoryid"] = new SelectList(_context.Categories, "Categoryid", "Categoryid");
@@ -102,6 +103,7 @@ namespace NorthwindApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> Create([Bind("Productid,Productname,Supplierid,Categoryid,Quantityperunit,Unitprice,Unitsinstock,Unitsonorder,Reorderlevel,Discontinued")] Product product)
         {
             if (ModelState.IsValid)
