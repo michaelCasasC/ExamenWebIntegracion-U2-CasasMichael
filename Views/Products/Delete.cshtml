@@ -53,17 +53,17 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Discontinued)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
+        <dt class="col-sm-2">
+            Category
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.Categoryid)
+        <dd class="col-sm-10">
+            @(Model.Category?.Categoryname ?? "None")
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Supplier)
+        <dt class="col-sm-2">
+            Supplier
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Supplier.Supplierid)
+        <dd class="col-sm-10">
+            @(Model.Supplier?.Companyname ?? "None")
         </dd>
     </dl>
     

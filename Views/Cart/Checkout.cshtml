@@ -1,0 +1,116 @@
+@model NorthwindApp.Models.CheckoutViewModel
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="container mt-4">
+    <h1>Checkout</h1>
+
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form asp-action="Checkout" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="mb-3">
+                            <label asp-for="Customerid" class="form-label"></label>
+                            <select asp-for="Customerid" class="form-select" asp-items="ViewBag.Customerid"></select>
+                            <span asp-validation-for="Customerid" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Employeeid" class="form-label"></label>
+                            <select asp-for="Employeeid" class="form-select" asp-items="ViewBag.Employeeid"></select>
+                            <span asp-validation-for="Employeeid" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Shipvia" class="form-label"></label>
+                            <select asp-for="Shipvia" class="form-select" asp-items="ViewBag.Shipvia"></select>
+                            <span asp-validation-for="Shipvia" class="text-danger"></span>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label asp-for="Shipname" class="form-label"></label>
+                                <input asp-for="Shipname" class="form-control" />
+                                <span asp-validation-for="Shipname" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Shipaddress" class="form-label"></label>
+                                <input asp-for="Shipaddress" class="form-control" />
+                                <span asp-validation-for="Shipaddress" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Shipcity" class="form-label"></label>
+                                <input asp-for="Shipcity" class="form-control" />
+                                <span asp-validation-for="Shipcity" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Shipregion" class="form-label"></label>
+                                <input asp-for="Shipregion" class="form-control" />
+                                <span asp-validation-for="Shipregion" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Shippostalcode" class="form-label"></label>
+                                <input asp-for="Shippostalcode" class="form-control" />
+                                <span asp-validation-for="Shippostalcode" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Shipcountry" class="form-label"></label>
+                                <input asp-for="Shipcountry" class="form-control" />
+                                <span asp-validation-for="Shipcountry" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Freight" class="form-label"></label>
+                                <input asp-for="Freight" class="form-control" />
+                                <span asp-validation-for="Freight" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success mt-4">Place Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Order Summary
+                </div>
+                <div class="card-body">
+                    <ul class="list-group mb-3">
+                        @foreach (var item in Model.Items)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>@item.Productname</strong><br />
+                                    @item.Quantity x @string.Format("{0:C}", item.Unitprice)
+                                </div>
+                                <span>@string.Format("{0:C}", item.Subtotal)</span>
+                            </li>
+                        }
+                    </ul>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal</span>
+                        <strong>@string.Format("{0:C}", Model.Items.Sum(i => i.Subtotal))</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Freight</span>
+                        <strong>@string.Format("{0:C}", Model.Freight)</strong>
+                    </div>
+                    <div class="d-flex justify-content-between fw-bold fs-5">
+                        <span>Total</span>
+                        <strong>@string.Format("{0:C}", Model.OrderTotal)</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

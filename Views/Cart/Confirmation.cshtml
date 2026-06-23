@@ -1,0 +1,72 @@
+@model NorthwindApp.Models.Order
+
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h1 class="card-title">Order Confirmation</h1>
+            <p class="text-muted">Order #<strong>@Model.Orderid</strong> has been registered successfully.</p>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h5>Shipping Information</h5>
+                    <p>
+                        <strong>@Model.Shipname</strong><br />
+                        @Model.Shipaddress<br />
+                        @Model.Shipcity, @Model.Shipregion<br />
+                        @Model.Shipcountry - @Model.Shippostalcode
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Order Info</h5>
+                    <p>
+                        <strong>Customer:</strong> @Model.Customer?.Companyname<br />
+                        <strong>Employee:</strong> @Model.Employee?.Firstname @Model.Employee?.Lastname<br />
+                        <strong>Order date:</strong> @Model.Orderdate?.ToString("yyyy-MM-dd")<br />
+                        <strong>Required date:</strong> @Model.Requireddate?.ToString("yyyy-MM-dd")
+                    </p>
+                </div>
+            </div>
+
+            <h5>Order Details</h5>
+            <div class="table-responsive mb-4">
+                <table class="table table-bordered align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Product</th>
+                            <th class="text-end">Unit Price</th>
+                            <th class="text-center">Quantity</th>
+                            <th class="text-end">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Orderdetails)
+                        {
+                            <tr>
+                                <td>@item.Product?.Productname</td>
+                                <td class="text-end">@string.Format("{0:C}", item.Unitprice)</td>
+                                <td class="text-center">@item.Quantity</td>
+                                <td class="text-end">@string.Format("{0:C}", (item.Unitprice ?? 0m) * item.Quantity)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-end">
+                <p>
+                    <strong>Freight:</strong> @string.Format("{0:C}", Model.Freight ?? 0m)
+                </p>
+                <p class="fs-4">
+                    <strong>Total:</strong> @string.Format("{0:C}", Model.Orderdetails.Sum(od => (od.Unitprice ?? 0m) * od.Quantity) + (Model.Freight ?? 0m))
+                </p>
+            </div>
+
+            <a asp-controller="Products" asp-action="Index" class="btn btn-primary">Continue Shopping</a>
+            <a asp-controller="Orders" asp-action="Details" asp-route-id="@Model.Orderid" class="btn btn-outline-secondary ms-2">View Order</a>
+        </div>
+    </div>
+</div>

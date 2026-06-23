@@ -1,0 +1,40 @@
+@model IEnumerable<NorthwindApp.Models.Product>
+
+@{
+    ViewData["Title"] = "Low Stock Products";
+}
+
+<div class="container mt-4">
+    <h1>Low Stock Products</h1>
+    <p class="text-muted">Threshold: @ViewBag.Threshold units or less.</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Supplier</th>
+                    <th class="text-end">Units in Stock</th>
+                    <th class="text-end">Reorder Level</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Productname</td>
+                        <td>@item.Category?.Categoryname</td>
+                        <td>@item.Supplier?.Companyname</td>
+                        <td class="text-end fw-bold">@item.Unitsinstock</td>
+                        <td class="text-end">@item.Reorderlevel</td>
+                        <td class="text-end">
+                            <a asp-action="Edit" asp-route-id="@item.Productid" class="btn btn-sm btn-outline-warning">Adjust Stock</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

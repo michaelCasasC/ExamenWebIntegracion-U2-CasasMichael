@@ -1,0 +1,63 @@
+@model List<NorthwindApp.Models.CartItemViewModel>
+
+@{
+    ViewData["Title"] = "My Cart";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Shopping Cart</h1>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning">
+            Your cart is empty. Browse <a asp-controller="Products" asp-action="Index">products</a> to add items.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="text-end">Price</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-end">Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Productname</td>
+                            <td class="text-end">@string.Format("{0:C}", item.Unitprice)</td>
+                            <td class="text-center">@item.Quantity</td>
+                            <td class="text-end">@string.Format("{0:C}", item.Subtotal)</td>
+                            <td class="text-end">
+                                <form asp-action="Remove" method="post">
+                                    <input type="hidden" name="productId" value="@item.Productid" />
+                                    <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                                    @Html.AntiForgeryToken()
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4">
+            <div>
+                <form asp-action="Clear" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-outline-secondary">Clear Cart</button>
+                </form>
+            </div>
+            <div class="text-end">
+                <h4>Total: @string.Format("{0:C}", Model.Sum(i => i.Subtotal))</h4>
+                <a asp-action="Checkout" class="btn btn-primary btn-lg">Checkout</a>
+            </div>
+        </div>
+    }
+</div>

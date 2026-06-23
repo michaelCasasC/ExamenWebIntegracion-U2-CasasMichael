@@ -405,3 +405,9 @@ C:\Users\USER\OneDrive\Documentos\6TO SEMESTRE ITIN\WEB INTEGRACIÓN\U2\ExamenU2
 C:\Users\USER\OneDrive\Documentos\6TO SEMESTRE ITIN\WEB INTEGRACIÓN\U2\ExamenU2\NorthwindApp\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\USER\OneDrive\Documentos\6TO SEMESTRE ITIN\WEB INTEGRACIÓN\U2\ExamenU2\NorthwindApp\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\USER\OneDrive\Documentos\6TO SEMESTRE ITIN\WEB INTEGRACIÓN\U2\ExamenU2\NorthwindApp\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\USER\OneDrive\Documentos\6TO SEMESTRE ITIN\WEB INTEGRACIÓN\U2\ExamenU2\NorthwindApp\bin\Debug\net10.0\Publicacion\web.config
+C:\Users\USER\OneDrive\Documentos\6TO SEMESTRE ITIN\WEB INTEGRACIÓN\U2\ExamenU2\NorthwindApp\bin\Debug\net10.0\Publicacion\appsettings.Development.json
+C:\Users\USER\OneDrive\Documentos\6TO SEMESTRE ITIN\WEB INTEGRACIÓN\U2\ExamenU2\NorthwindApp\bin\Debug\net10.0\Publicacion\appsettings.json
+C:\Users\USER\OneDrive\Documentos\6TO SEMESTRE ITIN\WEB INTEGRACIÓN\U2\ExamenU2\NorthwindApp\bin\Debug\net10.0\Publicacion\NorthwindApp.deps.json
+C:\Users\USER\OneDrive\Documentos\6TO SEMESTRE ITIN\WEB INTEGRACIÓN\U2\ExamenU2\NorthwindApp\bin\Debug\net10.0\Publicacion\NorthwindApp.runtimeconfig.json
+C:\Users\USER\OneDrive\Documentos\6TO SEMESTRE ITIN\WEB INTEGRACIÓN\U2\ExamenU2\NorthwindApp\bin\Debug\net10.0\Publicacion\NorthwindApp.staticwebassets.endpoints.json

@@ -10,6 +10,7 @@ using NorthwindApp.Models;
 
 namespace NorthwindApp.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]
     public class OrdersController : Controller
     {
         private readonly NorthwindContext _context;
